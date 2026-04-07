@@ -1,76 +1,77 @@
-# Xander Nexus
+# xander-nexus — Unified Control Plane for AI Agents
 
-Unified control plane for autonomous AI agents.
+[![CI](https://github.com/GBOYEE/xander-nexus/actions/workflows/ci.yml/badge.svg)](https://github.com/GBOYEE/xander-nexus/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white)](https://www.python.org)
+[![Docker](https://img.shields.io/badge/Docker-✓-blue?logo=docker&logoColor=white)](https://www.docker.com)
 
-## What it is
+Unified dashboard to manage autonomous AI agent systems: OpenClaw, xander-operator, aiopsx, HiveSec — all in one place.
 
-Xander Nexus ties together your existing AI ecosystem:
+## 🚀 What Problem This Solves
 
-- **OpenClaw** – agent runtime & gateway
-- **xander-operator** – browser automation tools
-- **aiopsx** – deployment & monitoring
-- **HiveSec** – security & compliance
+Managing multiple AI systems means juggling multiple dashboards, logs, and control panels. xander-nexus provides a single pane of glass to monitor health, start/stop agents, run security scans, and view operations metrics.
 
-Features a single dashboard to manage agents, monitor metrics, test tools, and run security scans.
+## ⚙️ How It Works
 
-## Tech Stack
+- **Next.js 15** frontend with shadcn/ui components
+- **FastAPI** backend (Python) for orchestration
+- **PostgreSQL** for state persistence
+- **Redis** for real-time pub/sub
+- **WebSocket** for live updates
+- **Docker Compose** for one-command deployment
 
-- **Frontend**: Next.js 15, TypeScript, Tailwind CSS, shadcn/ui
-- **Backend**: Next.js API routes (or separate FastAPI)
-- **Database**: PostgreSQL (planned)
-- **Realtime**: Socket.io (planned)
-- **Auth**: NextAuth.js (planned)
+Modules:
+- Dashboard overview (health of all systems)
+- Agents management (lifecycle control)
+- Security hub (HiveSec integration)
+- Tools studio (xander-operator primitives)
+- Operations metrics (Prometheus)
+- Marketer agent (job automation)
 
-## Quick Start
+## 📦 Quick Start
 
 ```bash
-# Install dependencies
-npm install
-
-# Copy environment and edit
-cp .env.example .env.local
-# Edit .env.local with your service URLs and API keys
-
-# Run dev server
-npm run dev
+# Clone and run
+git clone https://github.com/GBOYEE/xander-nexus.git
+cd xander-nexus
+cp .env.example .env
+# Edit .env with your database and LLM settings
+docker compose up -d
 ```
 
-Open http://localhost:3000/dashboard
+Open: http://localhost:3000 (frontend) and http://localhost:8000 (API)
 
-## Project Structure
+## 🧪 Development
+
+```bash
+# Install deps
+pip install -r requirements.txt
+npm install  # in app/
+
+# Run frontend
+npm run dev
+
+# Run API
+uvicorn app.main:app --reload
+```
+
+## 📂 Structure
 
 ```
 xander-nexus/
-├── app/
-│   ├── (dashboard)/           # Authenticated dashboard routes
-│   │   ├── agents/            # Agent manager
-│   │   ├── tools/             # Tool editor & test runner
-│   │   ├── operations/        # Metrics & deployment controls
-│   │   ├── security/          # Security hub
-│   │   └── settings/          # Integration configuration
-│   ├── api/                   # REST & streaming endpoints
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── layout/                # Sidebar, Header
-│   ├── ui/                    # shadcn/ui components
-│   └── ...
-├── lib/
-│   ├── api/                   # Clients for OpenClaw, aiopsx, HiveSec
-│   └── utils.ts
-└── data/                      # Local storage (if using file-based persistence)
+├── app/               # Next.js app (frontend)
+│   ├── (dashboard)/  # Dashboard pages
+│   ├── api/           # API routes (FastAPI via Next.js)
+│   └── components/    # UI components
+├── scripts/           # DB migrations, seed data
+├── docker-compose.yml
+└── README.md
 ```
 
-## Roadmap
+## 🤝 Contributing
 
-- [ ] Full integration with OpenClaw gateway (WebSocket)
-- [ ] Real-time logs streaming
-- [ ] PostgreSQL schema + user management
-- [ ] Plugin marketplace
-- [ ] Cost monitoring dashboard
-- [ ] Advanced tool studio with drag-and-drop
-- [ ] Authentication & multi-tenancy
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and PR guidelines.
 
-## License
+## 📄 License
 
-MIT
+MIT — see [LICENSE](LICENSE).
